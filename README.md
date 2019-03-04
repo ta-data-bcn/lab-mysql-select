@@ -58,21 +58,6 @@ Requirements:
 
 Now modify your solution in Challenge 3 so that the output will display all 23 authors instead of the top 3. Note that the authors who have sold 0 titles should also appear in your output (ideally display `0` instead of `NULL` as the `TOTAL`). Also order your results based on `TOTAL` from high to low.
 
-## Bonus Challenge - Most Profiting Authors
-
-Authors earn money from their book sales in two ways: advance and royalties. An advance is the money that the publisher pays the author before the book comes out. The royalties the author will receive is typically a percentage of the entire book sales. The total profit an author receives by publishing a book is the sum of the advance and the royalties.
-
-Given the information above, who are the 3 most profiting authors and how much royalties each of them have received? Write a query to find out.
-
-Requirements:
-
-* Your output should have the following columns:
-	* `AUTHOR ID` - the ID of the author
-	* `LAST NAME` - author last name
-	* `FIRST NAME` - author first name
-	* `PROFIT` - total profit the author has received combining the advance and royalties
-* Your output should be ordered from higher `PROFIT` values to lower values.
-* Only output the top 3 most profiting authors.
 
 *Hints:* 
 
