@@ -52,17 +52,9 @@ Requirements:
 * Your output should be ordered based on `TOTAL` from high to low.
 * Only output the top 3 best selling authors.
 
-*Hint: In order to calculate the total of profits of an author, you need to use the [MySQL SUM function](https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html#function_sum). Refer to the reference and learn how to use it.*
-
 ## Challenge 4 - Best Selling Authors Ranking
 
 Now modify your solution in Challenge 3 so that the output will display all 23 authors instead of the top 3. Note that the authors who have sold 0 titles should also appear in your output (ideally display `0` instead of `NULL` as the `TOTAL`). Also order your results based on `TOTAL` from high to low.
-
-
-*Hints:* 
-
-* If a title has multiple authors, how they split the royalties can be found in the `royaltyper` column of the `titleauthor` table.
-* We assume the coauthors will split the advance in the same way as the royalties.
 
 ## Deliverables
 
@@ -70,10 +62,10 @@ Now modify your solution in Challenge 3 so that the output will display all 23 a
 
 ## Submission
 
-* Add `solutions.sql` to git
-* Commit your code
-* Push to your fork
-* Create a pull request to the class repo
+* Add `solutions.sql` to git.
+* Commit your code.
+* Push to your fork.
+* Create a pull request to the class repo.
 
 ## References
 
