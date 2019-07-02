@@ -43,22 +43,19 @@ GROUP BY AUTHOR_ID
 ORDER BY QUANTITY DESC
 LIMIT 3
 ; 
-
-
 -- Challenge 4 --
 
 SELECT a.au_id AS AUTHOR_ID, au_lname AS LAST_NAME, au_fname AS FIRST_NAME, IFNULL(SUM(qty), 0) as QUANTITY
 FROM authors as a
-JOIN titleauthor as t2
+LEFT JOIN titleauthor as t2
 ON a.au_id = t2.au_id
 
-JOIN titles as t1
+LEFT JOIN titles as t1
 ON t2.title_id = t1.title_id
 
-JOIN sales AS s
+LEFT JOIN sales AS s
 ON t1.title_id = s.title_id 
 
 GROUP BY AUTHOR_ID
 ORDER BY QUANTITY DESC
-
 ; 
