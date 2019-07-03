@@ -1,32 +1,5 @@
 SELECT publishers.pub_name, COUNT(titles.title_id) AS Titles
 FROM publishers
-INNER JOIN titles
-ON publishers.pub_id = titles.pub_id
-GROUP BY publishers.pub_name;
-
-SELECT publishers.pub_name, titles.title AS Titles
-FROM titles
-RIGHT JOIN publishers
-ON titles.pub_id = publishers.pub_id;
-
-SELECT titles.title, sum(sales.qty) AS Sales
-FROM titles
-LEFT JOIN sales
-ON titles.title_id = sales.title_id
-GROUP BY titles.title
-ORDER BY Sales DESC;
-
-SELECT *
-FROM publications.employee emp
-RIGHT JOIN publications.jobs job
-ON emp.job_id = job.job_id
-UNION
-SELECT *
-FROM publications.employee emp
-LEFT JOIN publications.jobs job
-ON emp.job_id = job.job_id;
-
-
 #Challenge 1
 
 -- Joining publishers with titles
