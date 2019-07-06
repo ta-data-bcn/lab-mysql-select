@@ -37,4 +37,14 @@ on a.au_id = t.au_id
 join sales as s
 on t.title_id = s.title_id
 
-group by a.au_id
+group by a.au_id;
+#--------------------------------------------------------------------------------------------------- CHALLENGE 4
+SELECT a.au_id AS AUTHOR_ID, au_lname AS LAST_NAME, au_fname AS FIRST_NAME, IFNULL(SUM(qty), 0) as QUANTITY
+FROM authors as a
+JOIN titleauthor as tt ON a.au_id = tt.au_id
+
+JOIN titles as t ON tt.title_id = t.title_id
+
+JOIN sales AS s ON t.title_id = s.title_id
+
+GROUP BY AUTHOR_ID ORDER BY QUANTITY DESC
