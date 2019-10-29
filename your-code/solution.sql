@@ -29,20 +29,21 @@ ORDER BY a.au_id
 
 ## Challenge 3 - Best Selling Authors
 SELECT a.au_id, a.au_fname, a.au_lname,
-SUM(s.qty) AS total
+SUM(t.ytd_sales) AS total
 FROM authors a
 JOIN titleauthor ta on a.au_id = ta.au_id
-JOIN sales s on ta.title_id = s.title_id
+JOIN titles t on ta.title_id = t.title_id
 GROUP BY a.au_id, a.au_fname, a.au_lname
 ORDER BY total DESC
-LIMIT 3;
+LIMIT 3
+;
 
 ## Challenge 4 - Best Selling Authors Ranking
 SELECT a.au_id, a.au_fname, a.au_lname,
-COALESCE(SUM(s.qty),0) AS total
+COALESCE(SUM(t.ytd_sales),0) AS total
 FROM authors a
 LEFT JOIN titleauthor ta on a.au_id = ta.au_id
-LEFT JOIN sales s on ta.title_id = s.title_id
+LEFT JOIN titles t on ta.title_id = t.title_id
 GROUP BY a.au_id, a.au_fname, a.au_lname
 ORDER BY total DESC
 ;
