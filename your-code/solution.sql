@@ -48,16 +48,16 @@ SELECT
 au.au_id AS author_id,
 au.au_lname AS author_last_name,
 au.au_fname AS author_first_name,
-SUM(sales.qty) AS total
+SUM(ti.ytd_sales) AS total
 
 
 FROM authors AS au
 
 LEFT JOIN titleauthor AS ta ON au.au_id = ta.au_id
-LEFT JOIN sales AS sales ON sales.title_id = ta.title_id
+LEFT JOIN titles AS ti ON ti.title_id = ta.title_id
 
 
-WHERE sales.qty IS NOT NULL
+WHERE ti.ytd_sales IS NOT NULL
 
 GROUP BY 1
 
