@@ -37,8 +37,7 @@ LEFT JOIN publishers AS pu ON ti.pub_id = pu.pub_id
 
 WHERE pub_name IS NOT NULL
 
-GROUP BY 1,4
-
+GROUP BY 1,4;
 
 
 
@@ -73,7 +72,7 @@ SELECT
 au.au_id AS author_id,
 au.au_lname AS author_last_name,
 au.au_fname AS author_first_name,
-SUM(sales.qty) AS total
+COALESCE(SUM(sales.qty) ,0) AS total
 
 
 FROM authors AS au
