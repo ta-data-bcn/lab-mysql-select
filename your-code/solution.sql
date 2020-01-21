@@ -72,13 +72,13 @@ SELECT
 au.au_id AS author_id,
 au.au_lname AS author_last_name,
 au.au_fname AS author_first_name,
-COALESCE(SUM(sales.qty) ,0) AS total
+COALESCE(SUM(ti.ytd_sales),0) AS total
 
 
 FROM authors AS au
 
 LEFT JOIN titleauthor AS ta ON au.au_id = ta.au_id
-LEFT JOIN sales AS sales ON sales.title_id = ta.title_id
+LEFT JOIN titles AS ti ON ti.title_id = ta.title_id
 
 GROUP BY 1
 
