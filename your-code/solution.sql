@@ -1,37 +1,37 @@
-use publications;
+USE publications;
+
 # Challenge 1
-SELECT titleauthor.au_id as AuthorID, authors.au_lname AS LastName, authors.au_fname AS FirstName, titles.title AS Title, publishers.pub_name
-FROM titleauthor
-LEFT JOIN authors ON titleauthor.au_id = authors.au_id
-LEFT JOIN titles on titleauthor.title_id = titles.title_id
-INNER JOIN publishers on titles.pub_id = publishers.pub_id;
+SELECT authors.au_id, authors.au_lname, authors.au_fname, t.title, p.pub_name
+FROM authors
+         INNER JOIN titleauthor ta on authors.au_id = ta.au_id
+         INNER JOIN titles t on ta.title_id = t.title_id
+         INNER JOIN publishers p on t.pub_id = p.pub_id
+ORDER BY authors.au_id ASC;
 
 # Challenge 2
-SELECT titleauthor.au_id as AuthorID, authors.au_lname AS LastName, authors.au_fname AS FirstName, publishers.pub_name AS Publisher, count(titles.title) as Count
-FROM titleauthor
-INNER JOIN authors ON titleauthor.au_id = authors.au_id
-INNER JOIN titles on titleauthor.title_id = titles.title_id
-INNER JOIN publishers on titles.pub_id = publishers.pub_id
-GROUP BY authors.au_id, publishers.pub_name
-ORDER BY Count DESC;
+SELECT authors.au_id, authors.au_lname, authors.au_fname, p.pub_name, COUNT(t.title)
+FROM authors
+         INNER JOIN titleauthor ta on authors.au_id = ta.au_id
+         INNER JOIN titles t on ta.title_id = t.title_id
+         INNER JOIN publishers p on t.pub_id = p.pub_id
+GROUP BY authors.au_id, authors.au_lname, authors.au_fname, p.pub_name
+ORDER BY authors.au_id DESC;
 
 # Challenge 3
-SELECT titleauthor.au_id as AuthorID, authors.au_lname AS LastName , authors.au_fname AS FirstName, SUM(sales.qty) AS Sales
-FROM titleauthor
-INNER JOIN authors ON titleauthor.au_id = authors.au_id
-INNER JOIN titles on titleauthor.title_id = titles.title_id
-INNER JOIN sales on titles.title_id = sales.title_id
-INNER JOIN publishers on titles.pub_id = publishers.pub_id
-GROUP BY authors.au_id, publishers.pub_name
-ORDER BY Sales DESC
+SELECT authors.au_id, authors.au_lname, authors.au_fname, SUM(s.qty)
+FROM authors
+         INNER JOIN titleauthor ta on authors.au_id = ta.au_id
+         INNER JOIN titles t on ta.title_id = t.title_id
+         INNER JOIN sales s on t.title_id = s.title_id
+GROUP BY authors.au_id, authors.au_lname, authors.au_fname
+ORDER BY SUM(s.qty) DESC
 LIMIT 3;
 
 # Challenge 4
-SELECT titleauthor.au_id as AuthorID, authors.au_lname AS LastName , authors.au_fname AS FirstName, SUM(sales.qty) AS Sales
-FROM titleauthor
-INNER JOIN authors ON titleauthor.au_id = authors.au_id
-INNER JOIN titles on titleauthor.title_id = titles.title_id
-INNER JOIN sales on titles.title_id = sales.title_id
-INNER JOIN publishers on titles.pub_id = publishers.pub_id
-GROUP BY authors.au_id, publishers.pub_name
-ORDER BY Sales DESC;
+SELECT authors.au_id, authors.au_lname, authors.au_fname, IFNULL(SUM(s.qty), 0)
+FROM authors
+         INNER JOIN titleauthor ta on authors.au_id = ta.au_id
+         INNER JOIN titles t on ta.title_id = t.title_id
+         INNER JOIN sales s on t.title_id = s.title_id
+GROUP BY authors.au_id, authors.au_lname, authors.au_fname
+ORDER BY SUM(s.qty) DESC;
