@@ -7,6 +7,8 @@
 
 # avoid tracking publications database
 publications.sql
+# avoid tracking ERD image
+ERD.png
 
 # Remove previous ipynb_checkpoints
 #   git rm -r .ipynb_checkpoints/
