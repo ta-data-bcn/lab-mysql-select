@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>publications</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>kcid</key>
+			<string>-6665033987035693676</string>
+			<key>name</key>
+			<string>localhost</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8</string>
+			<key>contentFilterV2</key>
+			<dict>
+				<key>children</key>
+				<array/>
+				<key>filterClass</key>
+				<string>groupNode</string>
+				<key>isConjunction</key>
+				<true/>
+			</dict>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0
+			b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRk
+			YXRhgAGoCwwXGBkaHiVVJG51bGzTDQ4PEBMWV05TLmtleXNaTlMu
+			b2JqZWN0c1YkY2xhc3OiERKAAoADohQVgASABYAHVHR5cGVUcm93
+			c18QHVNlbGVjdGlvbkRldGFpbFR5cGVOU0luZGV4U2V00hsPHB1c
+			TlNSYW5nZUNvdW50EACABtIfICEiWiRjbGFzc25hbWVYJGNsYXNz
+			ZXNaTlNJbmRleFNldKIjJFpOU0luZGV4U2V0WE5TT2JqZWN00h8g
+			JidcTlNEaWN0aW9uYXJ5oiYkAAgAEQAaACQAKQAyADcASQBMAFEA
+			UwBcAGIAaQBxAHwAgwCGAIgAigCNAI8AkQCTAJgAnQC9AMIAzwDR
+			ANMA2ADjAOwA9wD6AQUBDgETASAAAAAAAAACAQAAAAAAAAAoAAAA
+			AAAAAAAAAAAAAAABIw==
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {695, 481}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>#Challenge 1
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', titles.`title` as 'TITLE', `publishers`.`pub_name` as 'PUBLISHER'
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`;
+
+#Challenge 2
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', `publishers`.`pub_name` as 'PUBLISHER', COUNT(*) as 'TITLE COUNT'
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`
+GROUP BY `titleauthor`.`au_id`, `publishers`.`pub_id`
+ORDER BY COUNT(*) DESC;
+
+
+#Challenge 3
+SELECT `titleauthor`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `titleauthor`.au_id
+ORDER BY TOTAL DESC
+LIMIT 3;
+
+#Challenge 4
+SELECT `authors`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(titleauthor.`title_id`) AS TOTAL
+FROM `titleauthor`
+RIGHT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `authors`.au_id
+ORDER BY TOTAL DESC;</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>214</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>#Challenge 4
+SELECT `authors`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(titleauthor.`title_id`) AS TOTAL
+FROM `titleauthor`
+RIGHT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `authors`.au_id
+ORDER BY TOTAL DESC</string>
+		<string>#Challenge 4
+SELECT `authors`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+RIGHT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `authors`.au_id
+ORDER BY TOTAL DESC</string>
+		<string>#Challenge 4
+SELECT `titleauthor`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+RIGHT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `authors`.au_id
+ORDER BY TOTAL DESC</string>
+		<string>#Challenge 3
+SELECT `titleauthor`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `titleauthor`.au_id
+ORDER BY TOTAL DESC
+LIMIT 3</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', `publishers`.`pub_name` as 'PUBLISHER', COUNT(*) as 'TITLE COUNT'
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`
+GROUP BY `titleauthor`.`au_id`, `publishers`.`pub_id`
+ORDER BY COUNT(*) DESC</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', `publishers`.`pub_name` as 'PUBLISHER', COUNT(*) as 'TITLE COUNT'
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`
+GROUP BY `titleauthor`.`au_id`, `publishers`.`pub_id`
+ORDER BY 'TITLE COUNT' DESC</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', `publishers`.`pub_name` as 'PUBLISHER', COUNT(*) as 'TITLE COUNT'
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`
+GROUP BY `titleauthor`.`au_id`, `publishers`.`pub_id`
+ORDER BY 'TITLE COUNT'</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', `publishers`.`pub_name` as 'PUBLISHER', COUNT(*) as 'TITLE COUNT'
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`
+GROUP BY `titleauthor`.`au_id`, `publishers`.`pub_id`</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', `publishers`.`pub_name` as 'PUBLISHER', COUNT(*)
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`
+GROUP BY `titleauthor`.`au_id`, `publishers`.`pub_id`</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', `publishers`.`pub_name` as 'PUBLISHER', COUNT(*)
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`
+GROUP BY 'AUTHOR ID', 'PUBLISHER'</string>
+		<string>#Challenge 1
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', titles.`title` as 'TITLE', `publishers`.`pub_name` as 'PUBLISHER'
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.`au_id` AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', titles.`title` as 'TITLE', `publishers`.`pub_name` as 'PUBLISHER'
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LEFT JOIN `titles` ON `titles`.`title_id` = `titleauthor`.`title_id`
+LEFT JOIN `publishers` ON `publishers`.`pub_id` = `titles`.`pub_id`</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `titleauthor`.au_id
+ORDER BY TOTAL DESC
+LIMIT 3</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY 'AUTHOR ID'
+ORDER BY TOTAL DESC
+LIMIT 3</string>
+		<string>#Challenge 3
+SELECT `titleauthor`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+GROUP BY `titleauthor`.au_id
+ORDER BY TOTAL DESC
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+LIMIT 3</string>
+		<string>#Challenge 4
+SELECT `titleauthors`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+RIGHT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `authors`.au_id
+ORDER BY TOTAL DESC</string>
+		<string>#Challenge 4
+SELECT `author`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+RIGHT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `authors`.au_id
+ORDER BY TOTAL DESC</string>
+		<string>#Challenge 4
+SELECT `titleauthor`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+RIGHT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `authors`.au_id
+ORDER BY TOTAL DESC
+LIMIT 3</string>
+		<string>#Challenge 4
+SELECT `titleauthor`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+RIGHT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `titleauthor`.au_id
+ORDER BY TOTAL DESC
+LIMIT 3</string>
+		<string>#Challenge 2
+SELECT `titleauthor`.au_id AS 'AUTHOR ID', authors.`au_lname` AS 'LAST NAME', authors.`au_fname` AS 'FIRST NAME', COUNT(*) AS TOTAL
+FROM `titleauthor`
+LEFT JOIN `authors` ON `titleauthor`.`au_id` = `authors`.`au_id`
+GROUP BY `titleauthor`.au_id
+ORDER BY TOTAL DESC</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>8.0.19</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
