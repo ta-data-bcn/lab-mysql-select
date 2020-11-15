@@ -1,10 +1,21 @@
 USE publications;
 
--- CHALLENGE 1
-SELECT * FROM authors;
-SELECT * FROM titles;
-SELECT * FROM titleauthor;
-SELECT * FROM sales;
+SELECT 
+    *
+FROM
+    authors;
+SELECT 
+    *
+FROM
+    titles;
+SELECT 
+    *
+FROM
+    titleauthor;
+SELECT 
+    *
+FROM
+    sales;
 
 -- CHALLENGE 1
 
@@ -43,7 +54,7 @@ GROUP BY ta.au_id , p.pub_name;
 
 -- CHALLENGE 3
 
-SELECT
+SELECT 
     ta.au_id AS 'AUTHOR ID',
     a.au_lname AS 'LAST NAME',
     a.au_fname AS 'FIRST NAME',
@@ -60,7 +71,7 @@ LIMIT 3;
 
 -- CHALLENGE 4
 
-SELECT
+SELECT 
     ta.au_id AS 'AUTHOR ID',
     a.au_lname AS 'LAST NAME',
     a.au_fname AS 'FIRST NAME',
