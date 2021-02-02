@@ -51,8 +51,8 @@ FROM
         INNER JOIN
     sales s ON ta.title_id = s.title_id
 GROUP BY a.au_id
-ORDER BY Total DESC;
--- LIMIT 3;
+ORDER BY Total DESC
+LIMIT 3;
 
 -- Challenge 4
 
