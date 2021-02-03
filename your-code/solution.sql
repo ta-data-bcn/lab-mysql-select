@@ -25,7 +25,7 @@ LEFT JOIN
 	GROUP BY AUTHOR_ID, LAST_NAME, publisher;
 
 -- Challenge 3 - Who are the top 3 authors who have sold the highest number of titles?
---based on total books sold. However here there is a tie for the third position if observe the query results from challenge 4.
+--based on total books sold. However here there is a tie for the third position as observed in query results from challenge 4.
 
 
 SELECT nq.author_id, a.au_lname AS LAST_NAME, a.au_fname AS FIRST_NAME
@@ -66,7 +66,7 @@ ORDER BY sold DESC) nq
 LEFT JOIN
 	authors a ON nq.AUTHOR_ID = a.au_id;
 
-	-----based on titles. 
+	-----based on titles.
 	SELECT nq.author_id, a.au_lname AS LAST_NAME, a.au_fname AS FIRST_NAME, nq.sold as TOTAL
 	FROM
 	(SELECT ta.au_id AS author_id, count(s.title_id) AS sold
